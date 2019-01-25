@@ -1,9 +1,12 @@
 from flask import Flask, request, redirect, render_template
 import cgi
 
+
 app = Flask(__name__)
 
 app.config['DEBUG'] = True
+
+
 
 @app.route("/")
 def index():
@@ -14,9 +17,13 @@ def index():
 @app.route("/", methods=['post'])
 def index_submitted():
     username = request.form['username']
+    username = username.strip(" ")
     email = request.form['email']
+    email = email.strip(" ")
     password = request.form['password']
+    password = password.strip(" ")
     verify_password = request.form['verify']
+    verify_password = verify_password.strip(" ")
     username_stay = ''
     email_stay = ''
     password_error = ''
